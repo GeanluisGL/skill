@@ -1,5 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* ========================================
+   CSS VARIABLES - LIGHT MODE (por defecto)
+   ======================================== */
+:root {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a6a;
+    --text-light: #6c6c8a;
+    --accent-primary: #0077b6;
+    --accent-secondary: #ffd60a;
+    --accent-gradient: linear-gradient(45deg, #0077b6, #ffd60a);
+    --card-bg: #ffffff;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --skill-bg-1: #ffffff;
+    --skill-bg-2: #1a1a2e;
+    --skill-bg-3: #ffffff;
+    --skill-text-1: #1a1a2e;
+    --skill-text-2: #ffffff;
+    --skill-text-3: #1a1a2e;
+}
+
+/* ========================================
+   DARK MODE VARIABLES
+   ======================================== */
+[data-theme="dark"] {
+    --bg-primary: #0a0a1a;
+    --bg-secondary: #0f0f23;
+    --text-primary: #ffffff;
+    --text-secondary: #c4c4d4;
+    --text-light: #a0a0b0;
+    --accent-primary: #0096e6;
+    --accent-secondary: #ffe44d;
+    --accent-gradient: linear-gradient(45deg, #0096e6, #ffe44d);
+    --card-bg: #15152a;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --header-bg: rgba(15, 15, 35, 0.95);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --skill-bg-1: #1a1a2e;
+    --skill-bg-2: #0f0f23;
+    --skill-bg-3: #1a1a2e;
+    --skill-text-1: #ffffff;
+    --skill-text-2: #ffffff;
+    --skill-text-3: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,40 +56,64 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Evita desplazamiento horizontal */
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
-    background: #0c1022;
-    color: #fff;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
 }
 
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}
+
+/* ========== HEADER ========== */
 .header {
     width: 100%;
     padding: 1rem 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0c1022;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: slideTop 1s ease forwards;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
 }
 
 .logo {
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
-    font-weight: 600;
-    animation: slideTop 1s ease forwards;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* ========== NAVEGACIÓN ========== */
 .navbar {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .nav-links {
@@ -51,273 +123,285 @@ body {
 }
 
 .nav-links li a {
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    width: 100%;
 }
 
 .navbar a.active,
 .navbar a:hover {
-background: linear-gradient(45deg, #0077b6, #ffd60a);
--webkit-text-fill-color: transparent;
-background-clip: text;
-} 
-
-.nav-links li a:hover {
-    color: #ffd60a;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Botón de menú hamburguesa */
+/* ========== BOTÓN DE TEMA ========== */
+.theme-toggle {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* ========== BOTÓN HAMBURGUESA ========== */
 .nav-toggle {
     display: none;
-    font-size: 1.5rem;
-    color: #fff;
     background: none;
     border: none;
     cursor: pointer;
+    color: var(--text-primary);
 }
 
-/* Contenedor principal */
+/* ========== SECCIÓN DE SKILLS ========== */
 .in-flex {
     display: flex;
     flex-wrap: wrap;
-    overflow: auto;
-    padding: 4rem;
-    margin: 5%;
-    justify-content: center; /* Centra los elementos hijos */
-    align-items: center; /* Centra verticalmente los elementos */
-  }
-  
-  /* Elementos flexibles individuales */
-  .flexSkill {
-    flex: 100%; /* Toma el 22% del ancho, pero se adapta */
-    height: 25rem; /* Ajusta la altura automáticamente */
-    width: 20rem;
-    margin: 5%; /* Espaciado entre los elementos */
-    overflow: auto;
-    border-radius: 0.8rem;
-    text-align: center; 
-    padding: 2rem;
-    /* flex-direction: column;
     justify-content: center;
-    align-items: center; */
-    animation: zoomIn 1s ease forwards;
-  }
-  
-  /* Iconos dentro de los elementos */
-  .flexSkill i:hover {
-    transform: scale(1.2);
-    z-index: 3;
-  }
-  
-  /* Títulos dentro de los elementos */
-  .flexSkill h1 {
-    font-size: 1.5rem; /* Tamaño de fuente adaptado */
-    font-style: italic;
-    margin-top: 1rem;
-    
-  }
-  
-  /* Estilo individual para los elementos */
-  .flexSkill:nth-child(1) {
-    background: #fff;
-    color: #0f141f;
-  }
-  
-  .flexSkill:nth-child(2) {
-    background: #0f141f;
-    color: #ffffff;
-  }
-  
-  .flexSkill:nth-child(3) {
-    background: #fff;
-    color: #0f141f;
-  }
-  
- 
-  
-  /* Iconos dentro de cada flexSkill */
-  .flexSkill i {
-    font-size: 6rem; /* Tamaño adaptable para pantallas más pequeñas */
-    margin: 1rem; /* Espaciado interno */
-    min-width: 80px; /* Tamaño mínimo en dispositivos pequeños */
-  }
+    align-items: center;
+    gap: 2rem;
+    padding: 120px 10% 50px;
+    min-height: 100vh;
+}
 
+.flexSkill {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    animation: zoomIn 0.6s ease forwards;
+}
 
-/*Responsive Adaptation*/
-/* Responsividad */
+.flexSkill:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.flexSkill h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.flexSkill hr {
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border: none;
+    margin: 1rem auto;
+    border-radius: 3px;
+}
+
+/* Iconos dentro de los elementos */
+.flexSkill i {
+    font-size: 3.5rem;
+    margin: 0.8rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.flexSkill i:hover {
+    transform: scale(1.2) translateY(-3px);
+}
+
+/* Colores específicos para iconos en modo claro */
+.flexSkill .bxl-java { color: #007396; }
+.flexSkill .bxl-php { color: #777BB4; }
+.flexSkill .bxl-javascript { color: #F7DF1E; }
+.flexSkill .bxs-data { color: #CC2927; }
+.flexSkill .devicon-csharp-plain { color: #239120; }
+.flexSkill .fa-house-laptop { color: var(--accent-primary); }
+.flexSkill .fa-laptop-file { color: var(--accent-secondary); }
+.flexSkill .bx-edit-alt { color: #4CAF50; }
+.flexSkill .bxl-microsoft { color: #F25022; }
+.flexSkill .bx-laptop { color: #2196F3; }
+.flexSkill .bx-server { color: #FF9800; }
+.flexSkill .bxs-select-multiple { color: #9C27B0; }
+.flexSkill .bx-message-dots { color: #00BCD4; }
+.flexSkill .fa-sitemap { color: #FF5722; }
+.flexSkill .fa-people-group { color: #4CAF50; }
+.flexSkill .bxs-brain { color: #E91E63; }
+
+/* Ajuste de colores en modo oscuro */
+[data-theme="dark"] .flexSkill .bxl-java { color: #61a0c0; }
+[data-theme="dark"] .flexSkill .bxl-php { color: #9b9fd4; }
+[data-theme="dark"] .flexSkill .bxl-javascript { color: #FFE15D; }
+[data-theme="dark"] .flexSkill .bxs-data { color: #E84C3D; }
+[data-theme="dark"] .flexSkill .devicon-csharp-plain { color: #5BCE5A; }
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
+    .in-flex {
+        gap: 1.5rem;
+        padding: 120px 5% 50px;
+    }
+    
     .flexSkill {
-      flex: 1 1 45%; /* Toma la mitad del ancho en pantallas medianas */
-      min-width: 150px; /* Reduce el tamaño mínimo */
+        min-width: 260px;
     }
-  
+    
     .flexSkill i {
-      font-size: 5rem; /* Reduce el tamaño del ícono */
+        font-size: 3rem;
     }
-  
+    
     .flexSkill h1 {
-      font-size: 1.25rem; /* Reduce el tamaño del título */
+        font-size: 1.5rem;
     }
-  }
+}
 
 @media (max-width: 768px) {
-    
-    
-    
-    body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; /* Elimina el scroll horizontal */
-        box-sizing: border-box; /* Garantiza un mejor control del tamaño de los elementos */
-        transform: scale(0.9); /* Reduce un poco el zoom en pantallas pequeñas */
-        transform-origin: top left;
+    .header {
+        padding: 1rem 5%;
+    }
+
+    /* Menú hamburguesa */
+    .nav-toggle {
+        display: block;
     }
 
     .nav-links {
-        display: none; /* Oculta el menú inicialmente */
-        flex-direction: column;
+        display: none;
         position: absolute;
         top: 100%;
         right: 0;
-        background: #0c1022;
-        width: 200px;
+        background: var(--header-bg);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
         padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 1rem;
+        gap: 1rem;
+        min-width: 200px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--border-color);
     }
 
     .nav-links.active {
-        display: flex; /* Muestra el menú cuando está activo */
-        
+        display: flex;
     }
 
- 
-    .nav-toggle {
-        display: block; /* Muestra el botón de hamburguesa */
+    .navbar {
+        gap: 1rem;
     }
 
+    .in-flex {
+        flex-direction: column;
+        padding: 100px 5% 50px;
+    }
+    
     .flexSkill {
-        flex: 1 1 100%; /* Ocupa todo el ancho en pantallas pequeñas */
-        margin: 1rem 0; /* Espaciado vertical entre elementos */
-      }
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
     
-      .flexSkill i {
-        font-size: 4rem; /* Tamaño más pequeño para íconos */
-      }
+    .flexSkill i {
+        font-size: 3rem;
+        margin: 0.6rem;
+    }
     
-      .flexSkill h1 {
-        font-size: 1rem; /* Ajusta el tamaño del título */
-      }
+    .flexSkill h1 {
+        font-size: 1.4rem;
+    }
 }
-
 
 @media (max-width: 480px) {
     .in-flex {
-      padding: 2rem; /* Reduce el padding general */
+        padding: 100px 1.5rem 50px;
     }
-  
+    
     .flexSkill {
-      padding: 1rem; /* Reduce el padding interno */
+        padding: 1.5rem;
     }
-  
+    
     .flexSkill i {
-      font-size: 3rem; /* Tamaño reducido para íconos en móviles */
+        font-size: 2.5rem;
+        margin: 0.5rem;
     }
-  
+    
     .flexSkill h1 {
-      font-size: 0.9rem; /* Ajusta el título para pantallas pequeñas */
+        font-size: 1.2rem;
     }
-  }
-
-
-
-/* KEYFRAMES ANIMATION */
-@keyframes slideTop {
-    0% {
-        opacity: 0;
-        transform: translateY(100px);
-
 }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* ========== ANIMACIONES ========== */
+@keyframes slideTop {
+    0% { opacity: 0; transform: translateY(100px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideRight {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px);
-
+    0% { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 
 @keyframes slideLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(100px);
-
-}
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    0% { opacity: 0; transform: translateX(100px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(-100px);
-
-}
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+    0% { opacity: 0; transform: translateY(-100px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes zoomIn {
-    0%{
-        opacity: 0;
-        transform: scale(0);
-
-    }
-    100%{
-        opacity: 1;
-        transform: scale(1);
-    }
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes floatImage {
-    0%{
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(-24px);
-    }
-    100%{
-        transform: translateY(0);
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
 @keyframes circleRotate {
-    0%{
-        transform: rotate(0);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
 }

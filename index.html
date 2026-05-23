@@ -1,99 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Geanluis Lorenzo | Portfolio </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geanluis Lorenzo | Skills</title>
     <link rel="stylesheet" href="Css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="https://img.icons8.com/material/24/under-computer--v1.png" type="image/x-icon"/>
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-    <script src="https://kit.fontawesome.com/977d857902.js" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
         <a href="https://geanluisgl.github.io/gy/" class="logo">Portfolio</a>
         <nav class="navbar">
             <ul class="nav-links">
-                <li> <a href="https://geanluisgl.github.io/gy/" style="--i:1">Home</a>
-                <li><a href="https://geanluisgl.github.io/about/" style="--i:2">About</a></li>
-                <li><a href="https://geanluisgl.github.io/skill/" style="--i:3" class="active">Skills</a></li>
-                <li><a href="https://geanluisgl.github.io/project/" style="--i:4">Projects</a></li>
-                <li><a href="https://geanluisgl.github.io/contact/" style="--i:5">Contact</a></li>  
+                <li><a href="https://geanluisgl.github.io/gy/">Home</a></li>
+                <li><a href="https://geanluisgl.github.io/about/">About</a></li>
+                <li><a href="https://geanluisgl.github.io/skill/" class="active">Skills</a></li>
+                <li><a href="https://geanluisgl.github.io/project/">Projects</a></li>
+                <li><a href="https://geanluisgl.github.io/contact/">Contact</a></li>
             </ul>
-            <button type="submit" class="nav-toggle" aria-label="Abrir menú">
-                <i class='bx bx-list-ul' style="font-size: 2rem;"></i>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                <i class='bx bx-moon'></i>
+            </button>
+            <button class="nav-toggle" aria-label="Abrir menú">
+                <i class='bx bx-menu' style="font-size: 2rem;"></i>
             </button>
         </nav>
-    </header><br>
+    </header>
 
+    <section class="in-flex">
+        <div class="flexSkill">
+            <h1>Software Development</h1>
+            <hr>
+            <div>
+                <i class='bx bxl-java' title="Java"></i>
+                <i class='bx bxl-php' title="PHP"></i>
+                <i class='bx bxl-javascript' title="JavaScript"></i>
+                <i class='bx bxs-data' title="SQL Server"></i>
+                <i class="devicon-csharp-plain" title="C#"></i>
+            </div>
+        </div>
 
+        <div class="flexSkill">
+            <h1>Knowledge & Tools</h1>
+            <hr>
+            <div>
+                <i class="fa-solid fa-house-laptop" title="Remote Work"></i>
+                <i class="fa-solid fa-laptop-file" title="Data Entry"></i>
+                <i class='bx bx-edit-alt' title="Writing"></i>
+                <i class='bx bxl-microsoft' title="Microsoft Office"></i>
+                <i class='bx bx-laptop' title="Frontend"></i>
+                <i class='bx bx-server' title="Backend"></i>
+            </div>
+        </div>
 
- <section class="in-flex">
+        <div class="flexSkill">
+            <h1>Soft Skills</h1>
+            <hr>
+            <div>
+                <i class='bx bxs-select-multiple' title="Multitasking"></i>
+                <i class='bx bx-message-dots' title="Communication"></i>
+                <i class="fa-solid fa-sitemap" title="Organization"></i>
+                <i class="fa-solid fa-people-group" title="Teamwork"></i>
+                <i class='bx bxs-brain' title="Analysis & Quick Learning"></i>
+            </div>
+        </div>
+    </section>
 
-<div class="flexSkill">
-    
-    
-    <h1>Software</h1><br><br><br><hr><br>
-            <i class='bx bxl-java' title="Java"></i>
-      
-            <i class='bx bxl-php'  title="PHP"></i>
+    <script>
+        // Menú hamburguesa
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Modo nocturno/diurno
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
         
-            <i class='bx bxl-javascript' title="Javascript"></i>
-       
-            <i class='bx bxs-data' title="SQL Management Studio 20" ></i>
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', savedTheme);
         
-            <i class="devicon-csharp-plain" title="C#"></i>
-       
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
+        }
         
+        updateThemeIcon(savedTheme);
 
-</div>
-
-<!-- <div class="flexSkill">
-    
-    <h1>UI Skills</h1><br><hr><br>
-
-    <i class="devicon-photoshop-plain" title="Adobe Photoshop"></i>
-    <i class="devicon-illustrator-plain" title="Adobe Illustrator"></i>
-    <i class="devicon-premierepro-plain" title="Adobe Premiere Pro"></i>
-    <i class="devicon-html5-plain" title="HTML"></i>
-    <i class="devicon-css3-plain" title="CSS"></i>
-          
-</div> -->
-
-<div class="flexSkill">
-    
-    <h1>Knowledge in</h1> <br><hr><br>
-    <i class="fa-solid fa-house-laptop" title="Remote Work"></i>    
-    <i class="fa-solid fa-laptop-file" title="Data Entry"></i>
-    <i class='bx bx-edit-alt' title="Writting "></i>
-    <i class='bx bxl-microsoft' title="Microsoft Office" ></i>
-    <i class='bx bx-laptop' title="Frontend"></i>
-    <i class='bx bx-server' title="Backend" ></i>
-
-</div>
-
-<div class="flexSkill">
-    
-    <h1>Skills</h1><br><hr><br>
-    <i class='bx bxs-select-multiple' title="Multitasking"></i>
-    <i class='bx bx-message-dots' title="Communication"></i>
-    <i class="fa-solid fa-sitemap" title="Organizatoin"></i>
-    <i class="fa-solid fa-people-group" title="Teamwork"></i>
-    <i class='bx bxs-brain' title="Analysis and quick learning"></i>
-
-
-</div>
- </section>
-
- <script>
-    document.querySelector('.nav-toggle').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('active');
-    });
-</script>
-
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+    </script>
 </body>
 </html>
