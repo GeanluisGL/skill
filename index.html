@@ -2,110 +2,138 @@
 <html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geanluis Lorenzo | Skills</title>
-    <link rel="stylesheet" href="Css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Geanluis Lorenzo | Skills & Competencias</title>
+    
+    <!-- Google Fonts + Icon Libraries -->
+     <link rel="stylesheet" href="Css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" href="https://img.icons8.com/material/24/under-computer--v1.png" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://img.icons8.com/material/24/under-computer--v1.png" type="image/x-icon">
 </head>
 <body>
-    <header class="header">
-        <a href="https://geanluisgl.github.io/gy/" class="logo">Portfolio</a>
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="https://geanluisgl.github.io/gy/">Home</a></li>
-                <li><a href="https://geanluisgl.github.io/about/">About</a></li>
-                <li><a href="https://geanluisgl.github.io/skill/" class="active">Skills</a></li>
-                <li><a href="https://geanluisgl.github.io/project/">Projects</a></li>
-                <li><a href="https://geanluisgl.github.io/contact/">Contact</a></li>
-            </ul>
-            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-                <i class='bx bx-moon'></i>
-            </button>
-            <button class="nav-toggle" aria-label="Abrir menú">
-                <i class='bx bx-menu' style="font-size: 2rem;"></i>
-            </button>
-        </nav>
-    </header>
 
-    <section class="in-flex">
-        <div class="flexSkill">
-            <h1>Software Development</h1>
-            <hr>
-            <div>
-                <i class='bx bxl-java' title="Java"></i>
-                <i class='bx bxl-php' title="PHP"></i>
-                <i class='bx bxl-javascript' title="JavaScript"></i>
-                <i class='bx bxs-data' title="SQL Server"></i>
-                <i class="devicon-csharp-plain" title="C#"></i>
-            </div>
+<header class="header">
+    <a href="https://geanluisgl.github.io/gy/" class="logo">Portfolio</a>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="https://geanluisgl.github.io/gy/">Home</a></li>
+            <li><a href="https://geanluisgl.github.io/about/">About</a></li>
+            <li><a href="https://geanluisgl.github.io/skill/" class="active">Skills</a></li>
+            <li><a href="https://geanluisgl.github.io/project/">Projects</a></li>
+            <li><a href="https://geanluisgl.github.io/contact/">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+            <i class='bx bx-moon'></i>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+            <i class='bx bx-menu'></i>
+        </button>
+    </nav>
+</header>
+
+<section class="in-flex">
+    <!-- Tarjeta: Desarrollo de Software -->
+    <div class="flexSkill">
+        <h1>Software Development</h1>
+        <hr>
+        <div class="skills-grid">
+            <div class="skill-item"><i class='bx bxl-java'></i><span class="skill-label">Java</span></div>
+            <div class="skill-item"><i class='bx bxl-php'></i><span class="skill-label">PHP</span></div>
+            <div class="skill-item"><i class='bx bxl-javascript'></i><span class="skill-label">JavaScript</span></div>
+            <div class="skill-item"><i class='bx bxs-data'></i><span class="skill-label">SQL Server</span></div>
+            <div class="skill-item"><i class="devicon-csharp-plain"></i><span class="skill-label">C#</span></div>
         </div>
+    </div>
 
-        <div class="flexSkill">
-            <h1>Knowledge & Tools</h1>
-            <hr>
-            <div>
-                <i class="fa-solid fa-house-laptop" title="Remote Work"></i>
-                <i class="fa-solid fa-laptop-file" title="Data Entry"></i>
-                <i class='bx bx-edit-alt' title="Writing"></i>
-                <i class='bx bxl-microsoft' title="Microsoft Office"></i>
-                <i class='bx bx-laptop' title="Frontend"></i>
-                <i class='bx bx-server' title="Backend"></i>
-            </div>
+    <!-- Tarjeta: Conocimientos & Herramientas (siempre visible, sin hover necesario) -->
+    <div class="flexSkill">
+        <h1>Knowledge & Tools</h1>
+        <hr>
+        <div class="skills-grid">
+            <div class="skill-item"><i class="fa-solid fa-house-laptop"></i><span class="skill-label">Remote Work</span></div>
+            <div class="skill-item"><i class="fa-solid fa-laptop-file"></i><span class="skill-label">Data Entry</span></div>
+            <div class="skill-item"><i class='bx bx-edit-alt'></i><span class="skill-label">Writing</span></div>
+            <div class="skill-item"><i class='bx bxl-microsoft'></i><span class="skill-label">Microsoft 365</span></div>
+            <div class="skill-item"><i class='bx bx-laptop'></i><span class="skill-label">Frontend</span></div>
+            <div class="skill-item"><i class='bx bx-server'></i><span class="skill-label">Backend</span></div>
         </div>
+    </div>
 
-        <div class="flexSkill">
-            <h1>Soft Skills</h1>
-            <hr>
-            <div>
-                <i class='bx bxs-select-multiple' title="Multitasking"></i>
-                <i class='bx bx-message-dots' title="Communication"></i>
-                <i class="fa-solid fa-sitemap" title="Organization"></i>
-                <i class="fa-solid fa-people-group" title="Teamwork"></i>
-                <i class='bx bxs-brain' title="Analysis & Quick Learning"></i>
-            </div>
+    <!-- Tarjeta: Habilidades Blandas (cada skill tiene texto visible) -->
+    <div class="flexSkill">
+        <h1>Soft Skills</h1>
+        <hr>
+        <div class="skills-grid">
+            <div class="skill-item"><i class='bx bxs-select-multiple'></i><span class="skill-label">Multitasking</span></div>
+            <div class="skill-item"><i class='bx bx-message-dots'></i><span class="skill-label">Communication</span></div>
+            <div class="skill-item"><i class="fa-solid fa-sitemap"></i><span class="skill-label">Organization</span></div>
+            <div class="skill-item"><i class="fa-solid fa-people-group"></i><span class="skill-label">Teamwork</span></div>
+            <div class="skill-item"><i class='bx bxs-brain'></i><span class="skill-label">Analysis & Learning</span></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script>
-        // Menú hamburguesa
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
+<script>
+    // ==========  MENÚ HAMBURGUESA MEJORADO ==========
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
 
-        navToggle.addEventListener('click', () => {
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
         });
 
-        // Cerrar menú al hacer click en un enlace
+        // Cerrar menú al hacer clic en cualquier enlace
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
 
-        // Modo nocturno/diurno
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-        
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', savedTheme);
-        
-        function updateThemeIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            icon.className = theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
-        }
-        
-        updateThemeIcon(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
+        // Cerrar menú al hacer clic fuera (opcional pero mejora UX)
+        document.addEventListener('click', (event) => {
+            if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
         });
-    </script>
+    }
+
+    // ==========  MODO OSCURO / CLARO con persistencia ==========
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    
+    function updateThemeIcon(theme) {
+        const iconElement = themeToggleBtn.querySelector('i');
+        if (theme === 'dark') {
+            iconElement.className = 'bx bx-sun';
+        } else {
+            iconElement.className = 'bx bx-moon';
+        }
+    }
+    
+    updateThemeIcon(savedTheme);
+    
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+
+    // (Opcional) cierre de menú en resize: si se redimensiona a escritorio y menú estaba abierto, se puede resetear visualmente, pero no es crítico
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+</script>
 </body>
 </html>
